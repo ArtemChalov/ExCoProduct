@@ -15,37 +15,100 @@
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header id="hhh">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">ExCoProduct</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a href="#" class="navbar-brand waves-effect">
+                    <strong class="orange-text">ExCo</strong>
+                </a>
+                <button class="navbar-toggler" type="button"
+                        data-toggle="collapse" data-target="#navbarContent"
+                        aria-controls="navbarContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav nav-pills mx-auto headerselector">
+                        <li class="nav-item active mx-1">
+                            <a class="nav-link waves-light" asp-area="" asp-page="/Index"><i class="fa fa-home"></i> Домашняя</a>
                         </li>
+                        <li class="nav-item dropdown mx-1">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false"><i class="fa fa-tools"></i>Продукция</a>
+                            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                @*@foreach (var item in gategoryList)
+                                    {
+                                        <a class="dropdown-item waves" asp-page="/ProductsCatalog/Index" asp-route-id="@item.GroupId">@item.GroupName</a>
+                                    }*@
+                                <a class="dropdown-item waves" asp-page="/ProductsCatalog/Index">Вся продукция</a>
+                            </div>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link waves-light" asp-area="" asp-page="#"><i class="fa fa-envelope"></i> Контакты</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item mx-1" id="dbli">
+                                <a class="nav-link waves-light" asp-area="" asp-page="/DataBaseControl/DBIndex"><i class="fa fa-database"></i> База товаров</a>
+                            </li>
+                        }
                     </ul>
+                    @*<script type="text/javascript">
+                        function showName() {
+
+                            if (this.id == 'dbli') {
+                                hhh = document.getElementById('hhh');
+                                hhh.style.height = "100%";
+                                // alert(document.URL);
+                            }
+                        }
+                        const listItems = document.querySelectorAll('.headerselector li');
+                        for (let i = 0; i < listItems.length; i++) {
+                            listItems[i].addEventListener('click', showName, false);
+                            //alert(listItems[i].textContent);
+                        }
+                    </script>*@
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
+
+        <div id="intro" class="view intro">
+            <div class="mask rgba-black-strong">
+                <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="col-md-10">
+                            <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">
+                                Мы предлагаем технологии
+                            </h2>
+                            <hr class="white" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="container">
+    <main role="main" class="container-fluid mt-3 zoomInDown" style="min-height: 100%">
         <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        @RenderBody()
+    </main>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - ExCoProduct
+            &copy; 2019 - ExCo - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
+
+    <script type="text/javascript">
+        function ready() {
+            var string = document.URL, substring = "DBIndex";
+            if (string.includes(substring)) {
+                hhh.style.height = "6%";
+                document.querySelector('.navbar').style.background = '#484e58';
+            }
+        }
+        document.addEventListener("DOMContentLoaded", ready);
+    </script>
     <script src="~/lib/bootstrap/dist/js/jquery-3.3.1.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/popper.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
