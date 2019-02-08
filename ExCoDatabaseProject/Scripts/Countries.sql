@@ -1,4 +1,4 @@
-﻿INSERT INTO [Factories] (FactoryName)
+﻿INSERT INTO [Countries] (CountryName)
 VALUES (N'Россия'),
 		(N'Китай'),
 		(N'Германия'),
