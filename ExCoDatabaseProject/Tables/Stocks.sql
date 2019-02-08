@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Stocks]
+(
+	[StockId] SMALLINT NOT NULL PRIMARY KEY IDENTITY, 
+    [StockName] NVARCHAR(50) NOT NULL,
+	CONSTRAINT UQ_StockName UNIQUE([StockName]) 
+)

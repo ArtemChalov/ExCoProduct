@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Prices]
+(
+	[PriceId] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [InPrice] MONEY NULL DEFAULT 0,
+    [OutPrice] MONEY NULL DEFAULT 0, 
+    [PriceData] DATETIME NULL
+)
