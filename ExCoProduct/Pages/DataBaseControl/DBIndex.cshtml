@@ -4,5 +4,15 @@
     ViewData["Title"] = "DBIndex";
 }
 
-<h1>DBIndex</h1>
+<h1 class="text-center">Страница управления товарами</h1>
+<hr />
+<div class="container">
+    <a asp-page="/ProductsEditor/ProductsList" class="page-link">Каталог товаров</a>
+    <br />
+    <a asp-page="/ProductsEditor/StocksCatalog/StocksList" class="page-link">Каталог складов</a>
+    <br />
+    <a asp-page="/ProductsEditor/GroupsCatalog/GroupsList" class="page-link">Каталог групп товаров</a>
+    <br />
+    <a asp-page="../DataBaseControl/Images/ProductImages" class="page-link">Каталог изображений</a>
+</div>
 

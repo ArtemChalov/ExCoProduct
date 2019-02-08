@@ -15,7 +15,7 @@
     <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
-    <header id="hhh">
+    <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container">
                 <a href="#" class="navbar-brand waves-effect">
@@ -101,10 +101,14 @@
 
     <script type="text/javascript">
         function ready() {
-            var string = document.URL, substring = "DBIndex";
+            var string = document.URL, substring = "DataBaseControl";
+            var headerblock = document.querySelector('header');
             if (string.includes(substring)) {
-                hhh.style.height = "6%";
+                headerblock.style.height = "6%";
                 document.querySelector('.navbar').style.background = '#484e58';
+            }
+            else {
+                 headerblock.style.height = "50%";
             }
         }
         document.addEventListener("DOMContentLoaded", ready);

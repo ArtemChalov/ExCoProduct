@@ -19,7 +19,9 @@
 }
 
 header {
-    height: 50%;
+    height: 6%;
+    transition-property: height;
+    transition-duration: 0.3s;
 }
 
 html,
